@@ -10,4 +10,4 @@ def boucle():
     print("Today's date:", today)
     threading.Timer(60, boucle())
 
-    
+boucle()
