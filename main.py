@@ -53,7 +53,6 @@ async def on_message(message) :
 
 @client.event
 async def boucleTP1():
-    
     while tre ==1:
         print("b")
         with open('coursTP1.json') as f:
@@ -63,28 +62,16 @@ async def boucleTP1():
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
         
         if today in data:
-            print(data[today])
-
-            
-                
+  
             groupeTP = data[today]['groupe']
             if groupeTP == "TP1":
-
-                print(data[today]['nom'])
-                print(data[today]['prof'])
-                print(data[today]['heure'])
-                print(data[today]['groupe'])
-                
                 channel = client.get_channel(688688027912110088)
                 await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP1 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
         await asyncio.sleep(60)
 
 @client.event
 async def boucleTP2():
-    
-
     while tre ==1:
-        print("q")
         with open('coursTP2.json') as f:
             data = json.load(f)
         
@@ -92,18 +79,10 @@ async def boucleTP2():
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
         
         if today in data:
-            print(data[today])
-
-            
                 
             groupeTP = data[today]['groupe']
             if groupeTP == "TP2":
-
-                print(data[today]['nom'])
-                print(data[today]['prof'])
-                print(data[today]['heure'])
-                print(data[today]['groupe'])
-                
+  
                 channel = client.get_channel(688688027912110088)
                 await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP2 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
         await asyncio.sleep(60)
@@ -113,26 +92,15 @@ async def boucleTP2():
 @client.event
 async def boucleTP3():
     while tre ==1:
-        print("g")
         with open('coursTP3.json') as f:
             data = json.load(f)
-        
+
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
         
         if today in data:
-            print(data[today])
-
-            
-                
             groupeTP = data[today]['groupe']
             if groupeTP == "TP3":
-
-                print(data[today]['nom'])
-                print(data[today]['prof'])
-                print(data[today]['heure'])
-                print(data[today]['groupe'])
-                
                 channel = client.get_channel(688688027912110088)
                 await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP3 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
         await asyncio.sleep(60)
@@ -150,23 +118,15 @@ async def boucleTP4():
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
         
         if today in data:
-            print(data[today])
-
-            
-                
+              
             groupeTP = data[today]['groupe']
-            if groupeTP == "TP4":
-
-                print(data[today]['nom'])
-                print(data[today]['prof'])
-                print(data[today]['heure'])
-                print(data[today]['groupe'])
-                
+            if groupeTP == "TP4":    
                 channel = client.get_channel(688688027912110088)
                 await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP4 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
         await asyncio.sleep(60)
     
 
+client.run(TOKEN)
 
 client.loop.create_task(boucleTP1())
 
@@ -175,6 +135,5 @@ client.loop.create_task(boucleTP2())
 client.loop.create_task(boucleTP3())
 
 client.loop.create_task(boucleTP4())
-client.run(TOKEN)
 
 
