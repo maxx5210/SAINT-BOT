@@ -19,7 +19,7 @@ except ImportError as e:
     os.system('pip install -U discord')
 
 tre = 1
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm4Y3w.kNmoLx08CCitZCmRk-84H82Fl7o"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm4nhw.NFcEzUDzfDck4sYYWP_mFTRNil8"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
@@ -51,54 +51,125 @@ async def on_message(message) :
 
 
 @client.event
-async def boucle():
+async def boucleTP1():
     
-
     while tre ==1:
-        with open('cours copy.json') as f:
+        with open('coursTP1.json') as f:
             data = json.load(f)
         
         dateTimeObj = datetime.now()
-        today = dateTimeObj.strftime("%Y-%m-%d")
+        today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
         
-        hours = dateTimeObj.strftime("%H:%M")
-        # print(today)
-        # print (compteur)
-        # print(data.get(today, "null"))
-        # print(hours)
         if today in data:
-            # print(data[today]['groupe'])
+            print(data[today])
 
-            heureCours = data[today]['heure']
-            if hours == heureCours:
+            
                 
+            groupeTP = data[today]['groupe']
+            if groupeTP == "TP1":
+
                 print(data[today]['nom'])
                 print(data[today]['prof'])
                 print(data[today]['heure'])
                 print(data[today]['groupe'])
                 
+                channel = client.get_channel(688688027912110088)
+                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP1 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+        await asyncio.sleep(60)
+
+@client.event
+async def boucleTP2():
+    
+
+    while tre ==1:
+        with open('coursTP2.json') as f:
+            data = json.load(f)
+        
+        dateTimeObj = datetime.now()
+        today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
+        
+        if today in data:
+            print(data[today])
+
+            
                 
-                if data[today]['groupe'] == "TP1":
-                    grp = TP1
+            groupeTP = data[today]['groupe']
+            if groupeTP == "TP2":
 
-                if data[today]['groupe'] == "TP2":
-                    grp = TP2
-
-                if data[today]['groupe'] == "TP3":
-                    grp = TP3
-
-                if data[today]['groupe'] == "TP4":
-                    grp = TP4
-
-
+                print(data[today]['nom'])
+                print(data[today]['prof'])
+                print(data[today]['heure'])
+                print(data[today]['groupe'])
                 
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + grp + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP2 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+        await asyncio.sleep(60)
+
+
+
+@client.event
+async def boucleTP3():
+    while tre ==1:
+        with open('coursTP3.json') as f:
+            data = json.load(f)
+        
+        dateTimeObj = datetime.now()
+        today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
+        
+        if today in data:
+            print(data[today])
+
+            
+                
+            groupeTP = data[today]['groupe']
+            if groupeTP == "TP3":
+
+                print(data[today]['nom'])
+                print(data[today]['prof'])
+                print(data[today]['heure'])
+                print(data[today]['groupe'])
+                
+                channel = client.get_channel(688688027912110088)
+                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP3 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+        await asyncio.sleep(60)
+
+
+
+@client.event
+async def boucleTP4():
+    while tre ==1:
+        with open('coursTP4.json') as f:
+            data = json.load(f)
+        
+        dateTimeObj = datetime.now()
+        today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
+        
+        if today in data:
+            print(data[today])
+
+            
+                
+            groupeTP = data[today]['groupe']
+            if groupeTP == "TP4":
+
+                print(data[today]['nom'])
+                print(data[today]['prof'])
+                print(data[today]['heure'])
+                print(data[today]['groupe'])
+                
+                channel = client.get_channel(688688027912110088)
+                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP4 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
         await asyncio.sleep(60)
     
 
 
-client.loop.create_task(boucle())
+client.loop.create_task(boucleTP1())
+
+client.loop.create_task(boucleTP2())
+
+client.loop.create_task(boucleTP3())
+
+client.loop.create_task(boucleTP4())
 client.run(TOKEN)
 
 
