@@ -17,9 +17,10 @@ try:
     import discord
 except ImportError as e:
     os.system('pip install -U discord')
+    import discord
 
 tre = 1
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm4nhw.NFcEzUDzfDck4sYYWP_mFTRNil8"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm5eow.9imvBhoLZj9warDe0EL6CkOcK2I"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
@@ -54,6 +55,7 @@ async def on_message(message) :
 async def boucleTP1():
     
     while tre ==1:
+        print("b")
         with open('coursTP1.json') as f:
             data = json.load(f)
         
@@ -82,6 +84,7 @@ async def boucleTP2():
     
 
     while tre ==1:
+        print("q")
         with open('coursTP2.json') as f:
             data = json.load(f)
         
@@ -110,6 +113,7 @@ async def boucleTP2():
 @client.event
 async def boucleTP3():
     while tre ==1:
+        print("g")
         with open('coursTP3.json') as f:
             data = json.load(f)
         
@@ -137,7 +141,8 @@ async def boucleTP3():
 
 @client.event
 async def boucleTP4():
-    while tre ==1:
+    while tre == 1 :
+        print("1")
         with open('coursTP4.json') as f:
             data = json.load(f)
         
