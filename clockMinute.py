@@ -21,13 +21,16 @@ def boucle():
         # print(data[today]['groupe'])
 
         heureCours = data[today]['heure']
-
         if hours == heureCours:
-            print("true")
+            # print("true")
+            print(data[today]['nom'])
+            print(data[today]['prof'])
+            print(data[today]['heure'])
+            print(data[today]['groupe'])
     
 
 
 
-    threading.Timer(1, lambda : boucle()).start()
+    threading.Timer(30, lambda : boucle()).start()
 
 boucle()
