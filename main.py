@@ -21,7 +21,7 @@ except ImportError as e:
 with open('cours copy.json') as f:
   data = json.load(f)
 
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm372Q.W34bbzj9wux9jmNJ1tghpmqWo9Y"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm4BLA.XnDQDmckJVdl0ed-cGhCgPsekVo"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
@@ -36,12 +36,20 @@ async def on_ready():
 
     print(f'{client.user} has connected to' f' {guild.name} id: {guild.id}')
 
-    
-    
-    boucle()
+
+@client.event
+async def on_message(message) :
+    id = client.get_guild(618803263558385671)
+
+    if message.content.find("!hello") != -1:
+        await message.channel.send("hi")
 
 
 def boucle():
+    
+
+    with open('cours copy.json') as f:
+        data = json.load(f)
     # today = date.today()
     dateTimeObj = datetime.now()
     today = dateTimeObj.strftime("%Y-%m-%d")
@@ -61,10 +69,12 @@ def boucle():
             print(data[today]['prof'])
             print(data[today]['heure'])
             print(data[today]['groupe'])
+            client.get_channel(688688027912110088).send_message(content = "test")
 
     
-    threading.Timer(30, lambda : boucle()).start()
+    threading.Timer(10, lambda : boucle()).start()
 
 
 client.run(TOKEN)
+
 
