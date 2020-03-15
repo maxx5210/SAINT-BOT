@@ -3,11 +3,10 @@ from datetime import date
 import threading
 
 
-boucle = 1
 
 def boucle():
     today = date.today()
     print("Today's date:", today)
-    threading.Timer(60, boucle())
+    threading.Timer(1, lambda : boucle()).start()
 
 boucle()

@@ -10,9 +10,9 @@ except ImportError as ee:
 try:
     import discord
 except ImportError as e:
-     pip.main(['install', 'discord'])
+    os.system('pip install -U discord')
 
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm1JDg.OBLYPbcFA2SQMU8zr_p9amZ9Z58"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm1z-Q.CAIzuoBGB5ZkGwYogLuesIdVVmE"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
