@@ -4,6 +4,10 @@ from time import sleep
 from datetime  import datetime
 import threading
 import json
+import asyncio
+
+
+
 
 try:
     import pip
@@ -16,16 +20,14 @@ try:
 except ImportError as e:
     os.system('pip install -U discord')
 
-
-
-with open('cours copy.json') as f:
-  data = json.load(f)
-
+tre = 1
 TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm4BLA.XnDQDmckJVdl0ed-cGhCgPsekVo"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
 client = discord.Client()
+
+
 
 @client.event
 async def on_ready():
@@ -45,36 +47,41 @@ async def on_message(message) :
         await message.channel.send("hi")
 
 
-def boucle():
+@client.event
+async def boucle():
     
 
-    with open('cours copy.json') as f:
-        data = json.load(f)
-    # today = date.today()
-    dateTimeObj = datetime.now()
-    today = dateTimeObj.strftime("%Y-%m-%d")
-    
-    hours = dateTimeObj.strftime("%H:%M")
-    # print(today)
-    # print (compteur)
-    # print(data.get(today, "null"))
-    # print(hours)
-    if today in data:
-        # print(data[today]['groupe'])
+    while tre ==1:
+        with open('cours copy.json') as f:
+            data = json.load(f)
+        # today = date.today()
+        dateTimeObj = datetime.now()
+        today = dateTimeObj.strftime("%Y-%m-%d")
+        
+        hours = dateTimeObj.strftime("%H:%M")
+        # print(today)
+        # print (compteur)
+        # print(data.get(today, "null"))
+        # print(hours)
+        if today in data:
+            # print(data[today]['groupe'])
 
-        heureCours = data[today]['heure']
-        if hours == heureCours:
-            # print("true")
-            print(data[today]['nom'])
-            print(data[today]['prof'])
-            print(data[today]['heure'])
-            print(data[today]['groupe'])
-            client.get_channel(688688027912110088).send_message(content = "test")
+            heureCours = data[today]['heure']
+            if hours == heureCours:
+                # print("true")
+                print(data[today]['nom'])
+                print(data[today]['prof'])
+                print(data[today]['heure'])
+                print(data[today]['groupe'])
+                
+                # channel = client.fetch_channel(688688027912110088)
+                channel = client.get_channel(688688027912110088)
+                await channel.send('hello')
+        await asyncio.sleep(3)
+    # threading.Timer(10, lambda : boucle()).start()
 
-    
-    threading.Timer(10, lambda : boucle()).start()
 
-
+client.loop.create_task(boucle())
 client.run(TOKEN)
 
 

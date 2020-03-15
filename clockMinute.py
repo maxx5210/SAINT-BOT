@@ -3,11 +3,10 @@ from datetime  import datetime
 import threading
 import json
 
-
-with open('cours copy.json') as f:
-  data = json.load(f)
-
-def boucle():
+def boucle(message):
+    
+    with open('cours copy.json') as f:
+    data = json.load(f)
     # today = date.today()
     dateTimeObj = datetime.now()
     today = dateTimeObj.strftime("%Y-%m-%d")
@@ -27,10 +26,10 @@ def boucle():
             print(data[today]['prof'])
             print(data[today]['heure'])
             print(data[today]['groupe'])
-    
+            await message.channel.send('Hi!')
 
 
 
     threading.Timer(30, lambda : boucle()).start()
 
-boucle()
+boucle(message)
