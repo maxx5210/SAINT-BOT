@@ -20,7 +20,7 @@ except ImportError as e:
     import discord
 
 tre = 1
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm5eow.9imvBhoLZj9warDe0EL6CkOcK2I"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm5rtg.XhAjmGthtMLiGE_lkT2hooh9Qg4"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
@@ -54,7 +54,6 @@ async def on_message(message) :
 @client.event
 async def boucleTP1():
     while tre ==1:
-        print("b")
         with open('coursTP1.json') as f:
             data = json.load(f)
         
@@ -110,7 +109,6 @@ async def boucleTP3():
 @client.event
 async def boucleTP4():
     while tre == 1 :
-        print("1")
         with open('coursTP4.json') as f:
             data = json.load(f)
         
@@ -126,8 +124,6 @@ async def boucleTP4():
         await asyncio.sleep(60)
     
 
-client.run(TOKEN)
-
 client.loop.create_task(boucleTP1())
 
 client.loop.create_task(boucleTP2())
@@ -135,5 +131,7 @@ client.loop.create_task(boucleTP2())
 client.loop.create_task(boucleTP3())
 
 client.loop.create_task(boucleTP4())
+
+client.run(TOKEN)
 
 
