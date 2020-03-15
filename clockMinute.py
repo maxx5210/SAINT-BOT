@@ -3,7 +3,7 @@ from datetime  import datetime
 import threading
 import json
 
-compteur = 1
+
 with open('cours copy.json') as f:
   data = json.load(f)
 
