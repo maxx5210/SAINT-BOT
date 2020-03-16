@@ -27,7 +27,7 @@ except ImportError as e:
 
 
 mydb = mysql.connector.connect(
-    host="jdbc:mysql://jdbc:mysql://mysql://b399b1760ce1b7:74447dfa@us-cdbr-iron-east-04.cleardb.net/heroku_59eac7a250669e4?reconnect=true:3306/heroku_59eac7a250669e4?reconnect=true",
+    host="us-cdbr-iron-east-04.cleardb.net",
     user="b399b1760ce1b7",
     passwd="74447dfa",
     database="heroku_59eac7a250669e4"
