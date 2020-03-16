@@ -34,7 +34,7 @@ mydb = mysql.connector.connect(
 )
 
 tre = 1
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm-sEQ.VuyfBS5CCS3Y5MHuJWiighJSqu4"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm-tOA.j14Qs0FPUOjdijhsX1eKp1tAdmA"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
