@@ -27,14 +27,14 @@ except ImportError as e:
 
 
 mydb = mysql.connector.connect(
-    host="us-cdbr-iron-east-04.cleardb.net",
-    user="b399b1760ce1b7",
-    passwd="74447dfa",
-    database="heroku_59eac7a250669e4"
+    host="127.0.0.1",
+    user="root",
+    passwd="",
+    database="bot"
 )
 
 tre = 1
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm-tOA.j14Qs0FPUOjdijhsX1eKp1tAdmA"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm-yXw.Nqh06HL2RQKXT4M40IZnZB47YKc"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
