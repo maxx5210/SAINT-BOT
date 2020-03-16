@@ -3,7 +3,7 @@ import os
 
 from time import sleep
 from datetime  import datetime
-import threading
+
 import json
 import asyncio
 
@@ -19,8 +19,22 @@ except ImportError as e:
     os.system('pip install -U discord')
     import discord
 
+try:
+    import mysql.connector
+except ImportError as e:
+    os.system('pip install mysql-connector')
+    import mysql.connector
+
+
+mydb = mysql.connector.connect(
+    host="127.0.0.1",
+    user="root",
+    passwd="",
+    database="bot"
+)
+
 tre = 1
-TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm5rtg.XhAjmGthtMLiGE_lkT2hooh9Qg4"
+TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm-EUg.13zkOO12TAj6uvoisZ1boBHsLhQ"
 
 GUILD = 'COMPUTING UNIVERSITY'
 
@@ -54,75 +68,149 @@ async def on_message(message) :
 @client.event
 async def boucleTP1():
     while tre ==1:
-        with open('coursTP1.json') as f:
-            data = json.load(f)
-        
+
+        dateCours=""
+        cours=""
+        prof=""
+        heure=""
+        groupe=""
+
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
-        
-        if today in data:
+
+        #BASE DE DONNEES
+        mycursor = mydb.cursor()
+
+        mycursor.execute(f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP1'")
+
+        print(today)
+        myresult = mycursor.fetchall()
+        for row in myresult:
+            dateCours = row[0]
+            cours = row[1]
+            prof = row[2]
+            heure = row[3]
+            groupe = row[4]
+
+        if today == dateCours:
   
-            groupeTP = data[today]['groupe']
+            groupeTP = groupe
             if groupeTP == "TP1":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP1 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+                await channel.send('Il est ' + heure + '. Les ' + TP1 + ' ont ' + cours+' avec ' + prof)
         await asyncio.sleep(60)
 
 @client.event
 async def boucleTP2():
-    while tre ==1:
-        with open('coursTP2.json') as f:
-            data = json.load(f)
-        
+    while tre == 1:
+
+        dateCours = ""
+        cours = ""
+        prof = ""
+        heure = ""
+        groupe = ""
+
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
-        
-        if today in data:
-                
-            groupeTP = data[today]['groupe']
+
+        #BASE DE DONNEES
+        mycursor = mydb.cursor()
+
+        mycursor.execute(
+            f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP2'")
+
+        print(today)
+        myresult = mycursor.fetchall()
+        for row in myresult:
+            dateCours = row[0]
+            cours = row[1]
+            prof = row[2]
+            heure = row[3]
+            groupe = row[4]
+
+        if today == dateCours:
+
+            groupeTP = groupe
             if groupeTP == "TP2":
-  
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP2 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+                await channel.send('Il est ' + heure + '. Les ' + TP2 + ' ont ' + cours+' avec ' + prof)
         await asyncio.sleep(60)
 
 
 
 @client.event
 async def boucleTP3():
-    while tre ==1:
-        with open('coursTP3.json') as f:
-            data = json.load(f)
+    while tre == 1:
+
+        dateCours = ""
+        cours = ""
+        prof = ""
+        heure = ""
+        groupe = ""
 
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
-        
-        if today in data:
-            groupeTP = data[today]['groupe']
+
+        #BASE DE DONNEES
+        mycursor = mydb.cursor()
+
+        mycursor.execute(
+            f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP3'")
+
+        print(today)
+        myresult = mycursor.fetchall()
+        for row in myresult:
+            dateCours = row[0]
+            cours = row[1]
+            prof = row[2]
+            heure = row[3]
+            groupe = row[4]
+
+        if today == dateCours:
+
+            groupeTP = groupe
             if groupeTP == "TP3":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP3 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+                await channel.send('Il est ' + heure + '. Les ' + TP3 + ' ont ' + cours+' avec ' + prof)
         await asyncio.sleep(60)
 
 
 
 @client.event
 async def boucleTP4():
-    while tre == 1 :
-        with open('coursTP4.json') as f:
-            data = json.load(f)
-        
+    while tre == 1:
+
+        dateCours = ""
+        cours = ""
+        prof = ""
+        heure = ""
+        groupe = ""
+
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
-        
-        if today in data:
-              
-            groupeTP = data[today]['groupe']
-            if groupeTP == "TP4":    
+
+        #BASE DE DONNEES
+        mycursor = mydb.cursor()
+
+        mycursor.execute(
+            f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP4'")
+
+        print(today)
+        myresult = mycursor.fetchall()
+        for row in myresult:
+            dateCours = row[0]
+            cours = row[1]
+            prof = row[2]
+            heure = row[3]
+            groupe = row[4]
+
+        if today == dateCours:
+            groupeTP = groupe
+            if groupeTP == "TP4":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + data[today]['heure'] + '. Les ' + TP4 + ' ont ' + data[today]['nom'] +' avec ' + data[today]['prof'])
+                await channel.send('Il est ' + heure + '. Les ' + TP4 + ' ont ' + cours+' avec ' + prof)
         await asyncio.sleep(60)
-    
+
 
 client.loop.create_task(boucleTP1())
 
