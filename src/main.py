@@ -1,8 +1,8 @@
-#created by @Makusu5210, @glowning7 and @Maxence_Jung
+# created by @Makusu5210, @glowning7 and @Maxence_Jung
 import os
 
 from time import sleep
-from datetime  import datetime
+from datetime import datetime
 
 import json
 import asyncio
@@ -11,7 +11,6 @@ try:
     import pip
 except ImportError as ee:
     os.system('python get-pip.py')
-
 
 try:
     import discord
@@ -24,7 +23,6 @@ try:
 except ImportError as e:
     os.system('pip install mysql-connector')
     import mysql.connector
-
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -43,7 +41,6 @@ TP2 = '<@&647066080094847021>'
 TP3 = '<@&647066128027222027>'
 TP4 = '<@&647066184478490665>'
 
-
 client = discord.Client()
 
 
@@ -53,12 +50,11 @@ async def on_ready():
         if guild.name == GUILD:
             break
 
-
     print(f'{client.user} has connected to' f' {guild.name} id: {guild.id}')
 
 
 @client.event
-async def on_message(message) :
+async def on_message(message):
     id = client.get_guild(618803263558385671)
 
     if message.content.find("!hello") != -1:
@@ -67,21 +63,21 @@ async def on_message(message) :
 
 @client.event
 async def boucleTP1():
-    while tre ==1:
+    while tre == 1:
 
-        dateCours=""
-        cours=""
-        prof=""
-        heure=""
-        groupe=""
+        dateCours = ""
+        cours = ""
+        prof = ""
+        heure = ""
+        groupe = ""
 
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
 
-        #BASE DE DONNEES
+        # BASE DE DONNEES
         mycursor = mydb.cursor()
 
-        mycursor.execute(f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP1'")
+        mycursor.execute(f"SELECT DISTINCT * FROM saintbot WHERE date={today} AND groupe='TP1'")
 
         print(today)
         myresult = mycursor.fetchall()
@@ -93,12 +89,13 @@ async def boucleTP1():
             groupe = row[4]
 
         if today == dateCours:
-  
+
             groupeTP = groupe
             if groupeTP == "TP1":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + heure + '. Les ' + TP1 + ' ont ' + cours+' avec ' + prof)
+                await channel.send('Il est ' + heure + '. Les ' + TP1 + ' ont ' + cours + ' avec ' + prof)
         await asyncio.sleep(60)
+
 
 @client.event
 async def boucleTP2():
@@ -113,7 +110,7 @@ async def boucleTP2():
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
 
-        #BASE DE DONNEES
+        # BASE DE DONNEES
         mycursor = mydb.cursor()
 
         mycursor.execute(
@@ -133,9 +130,8 @@ async def boucleTP2():
             groupeTP = groupe
             if groupeTP == "TP2":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + heure + '. Les ' + TP2 + ' ont ' + cours+' avec ' + prof)
+                await channel.send('Il est ' + heure + '. Les ' + TP2 + ' ont ' + cours + ' avec ' + prof)
         await asyncio.sleep(60)
-
 
 
 @client.event
@@ -151,7 +147,7 @@ async def boucleTP3():
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
 
-        #BASE DE DONNEES
+        # BASE DE DONNEES
         mycursor = mydb.cursor()
 
         mycursor.execute(
@@ -171,9 +167,8 @@ async def boucleTP3():
             groupeTP = groupe
             if groupeTP == "TP3":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + heure + '. Les ' + TP3 + ' ont ' + cours+' avec ' + prof)
+                await channel.send('Il est ' + heure + '. Les ' + TP3 + ' ont ' + cours + ' avec ' + prof)
         await asyncio.sleep(60)
-
 
 
 @client.event
@@ -189,7 +184,7 @@ async def boucleTP4():
         dateTimeObj = datetime.now()
         today = dateTimeObj.strftime("%Y-%m-%d-%H-%M")
 
-        #BASE DE DONNEES
+        # BASE DE DONNEES
         mycursor = mydb.cursor()
 
         mycursor.execute(
@@ -208,7 +203,7 @@ async def boucleTP4():
             groupeTP = groupe
             if groupeTP == "TP4":
                 channel = client.get_channel(688688027912110088)
-                await channel.send('Il est ' + heure + '. Les ' + TP4 + ' ont ' + cours+' avec ' + prof)
+                await channel.send('Il est ' + heure + '. Les ' + TP4 + ' ont ' + cours + ' avec ' + prof)
         await asyncio.sleep(60)
 
 
@@ -221,5 +216,3 @@ client.loop.create_task(boucleTP3())
 client.loop.create_task(boucleTP4())
 
 client.run(TOKEN)
-
-
