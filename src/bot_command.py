@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 
-TOKEN = 'Njg4NDk0NzkzNDg3NDE3MzQ0.Xqrbog.pWg-qZgHVPXpV2YmJS69J3FRWVg'
+TOKEN = ''
 GUILD = "COMPUTING UNVIVERSITY"
 client = commands.Bot(command_prefix='!')
 client.remove_command("help")
