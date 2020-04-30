@@ -31,7 +31,7 @@ mydb = mysql.connector.connect(
     database="bot"
 )
 
-tre = 1
+
 TOKEN = "Njg4NDk0NzkzNDg3NDE3MzQ0.Xm-yXw.Nqh06HL2RQKXT4M40IZnZB47YKc"
 
 GUILD = 'COMPUTING UNIVERSITY'
@@ -55,7 +55,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    id = client.get_guild(618803263558385671)
+    id_ = client.get_guild(618803263558385671)
 
     if message.content.find("!hello") != -1:
         await message.channel.send("hi")
@@ -63,7 +63,7 @@ async def on_message(message):
 
 @client.event
 async def boucleTP1():
-    while tre == 1:
+    while True:
 
         dateCours = ""
         cours = ""
@@ -99,7 +99,7 @@ async def boucleTP1():
 
 @client.event
 async def boucleTP2():
-    while tre == 1:
+    while True:
 
         dateCours = ""
         cours = ""
@@ -136,7 +136,7 @@ async def boucleTP2():
 
 @client.event
 async def boucleTP3():
-    while tre == 1:
+    while True:
 
         dateCours = ""
         cours = ""
@@ -173,7 +173,7 @@ async def boucleTP3():
 
 @client.event
 async def boucleTP4():
-    while tre == 1:
+    while True:
 
         dateCours = ""
         cours = ""
@@ -187,8 +187,7 @@ async def boucleTP4():
         # BASE DE DONNEES
         mycursor = mydb.cursor()
 
-        mycursor.execute(
-            f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP4'")
+        mycursor.execute(f"SELECT DISTINCT * FROM saintbot WHERE date='{today}' AND groupe='TP4'")
 
         print(today)
         myresult = mycursor.fetchall()
